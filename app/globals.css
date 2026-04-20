@@ -12,15 +12,63 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Spreadsheet grid styles */
+.grid-cell {
+  border: 1px solid #e5e7eb;
+  padding: 6px 10px;
+  font-size: 14px;
+  outline: none;
+  min-width: 120px;
+  background: white;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.grid-cell:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+  z-index: 1;
+  position: relative;
+}
+
+.grid-header {
+  background: #f9fafb;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+  padding: 6px 10px;
+  font-size: 14px;
+  outline: none;
+  min-width: 120px;
+}
+
+.grid-header:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+  z-index: 1;
+  position: relative;
+}
+
+/* Markdown output */
+.markdown-output {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 4;
+  white-space: pre;
+}
+
+/* Copy button animation */
+@keyframes checkmark-pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.checkmark-animate {
+  animation: checkmark-pop 0.3s ease-out;
 }

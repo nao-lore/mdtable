@@ -1,65 +1,142 @@
-import Image from "next/image";
+import TableEditor from "./components/TableEditor";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen flex flex-col">
+      {/* AdSense slot - top banner */}
+      <div className="w-full bg-gray-50 border-b border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 py-2 text-center text-xs text-gray-400">
+          {/* AdSense slot */}
+        </div>
+      </div>
+
+      <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Hero */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+            Markdown Table Generator
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Create Markdown tables with a visual spreadsheet editor. Edit cells,
+            set column alignment, import CSV, and copy the output instantly.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* Table Editor Tool */}
+        <TableEditor />
+
+        {/* SEO Content Section */}
+        <section className="mt-16 mb-12 max-w-3xl mx-auto prose prose-gray">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            What Is a Markdown Table?
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Markdown is a lightweight markup language used to format plain text.
+            It is widely supported across platforms like GitHub, GitLab, Notion,
+            Reddit, Stack Overflow, and many static site generators. Markdown
+            tables let you present structured data in rows and columns using a
+            simple text-based syntax that is easy to read even without rendering.
+          </p>
+
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Markdown Table Syntax
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-3">
+            A Markdown table consists of three parts: the header row, the
+            separator row, and the data rows. The separator row uses dashes and
+            colons to define column alignment. Here is an example:
+          </p>
+          <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm font-mono text-gray-800 overflow-x-auto mb-4">
+{`| Name    | Role       | Status |
+|:--------|:----------:|-------:|
+| Alice   | Developer  | Active |
+| Bob     | Designer   | Active |`}
+          </pre>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            In the separator row, a colon on the left (<code className="text-sm bg-gray-100 px-1 py-0.5 rounded">:---</code>) means
+            left-aligned, colons on both sides (<code className="text-sm bg-gray-100 px-1 py-0.5 rounded">:---:</code>) means
+            center-aligned, and a colon on the right (<code className="text-sm bg-gray-100 px-1 py-0.5 rounded">---:</code>) means
+            right-aligned. Pipes (<code className="text-sm bg-gray-100 px-1 py-0.5 rounded">|</code>) separate each column.
+          </p>
+
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            How to Use This Markdown Table Generator
+          </h2>
+          <ol className="text-gray-700 leading-relaxed space-y-2 mb-4 list-decimal list-inside">
+            <li>
+              <strong>Edit cells</strong> directly in the spreadsheet grid
+              above. Click any cell and start typing.
+            </li>
+            <li>
+              <strong>Add or remove rows and columns</strong> using the toolbar
+              buttons.
+            </li>
+            <li>
+              <strong>Set column alignment</strong> by clicking the alignment
+              button below each header. It cycles through left, center, and
+              right.
+            </li>
+            <li>
+              <strong>Import CSV data</strong> by clicking the Import CSV
+              button and pasting comma-separated or tab-separated text.
+            </li>
+            <li>
+              <strong>Copy the Markdown output</strong> with one click. Paste
+              it into your README, documentation, or any Markdown-supported
+              editor.
+            </li>
+          </ol>
+
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Where Can You Use Markdown Tables?
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Markdown tables work anywhere Markdown is supported. Common use
+            cases include GitHub README files, pull request descriptions, wiki
+            pages, Jupyter notebooks, documentation sites built with tools like
+            Docusaurus or MkDocs, blog posts written in Markdown, and note-taking
+            apps like Obsidian and Notion. This generator produces
+            standard-compliant Markdown that renders correctly across all these
+            platforms.
+          </p>
+
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Tips for Better Markdown Tables
+          </h2>
+          <ul className="text-gray-700 leading-relaxed space-y-2 mb-4 list-disc list-inside">
+            <li>
+              Keep cell content concise. Long text in table cells can be hard to
+              read in raw Markdown.
+            </li>
+            <li>
+              Use column alignment to improve readability. Numbers look better
+              right-aligned, while text is typically left-aligned.
+            </li>
+            <li>
+              Avoid special Markdown characters inside cells. If you need a pipe
+              character, escape it with a backslash (<code className="text-sm bg-gray-100 px-1 py-0.5 rounded">\|</code>).
+            </li>
+            <li>
+              For large datasets, consider importing from CSV rather than typing
+              each cell manually.
+            </li>
+          </ul>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-200 py-6 text-center text-sm text-gray-500">
+        <p>
+          mdtable — Free Markdown Table Generator. No signup required.
+        </p>
+      </footer>
+
+      {/* AdSense slot - bottom banner */}
+      <div className="w-full bg-gray-50 border-t border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 py-2 text-center text-xs text-gray-400">
+          {/* AdSense slot */}
+        </div>
+      </div>
     </div>
   );
 }
